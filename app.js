@@ -39,7 +39,7 @@ app.get('/api', function (req, res) {
 		if(!req.query.original) {
 			object.resources = JSON.parse(process_(object.resources));
 		} else {
-			utils.logme("Load original Resource group template: "+file_+".json", config);
+			utils.logme("Load original Resource group template: "+file, config);
 		}
 
 		res.header('Content-Type','text/json').send(object);
