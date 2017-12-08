@@ -7,7 +7,7 @@ var eh_helper   = {
 	},
 	logme 		: function(text, _ref, config) {
 		if(config.log_) {
-			var color = (text.indexOf("Deleting object:") !== -1) ? '\x1b[31m' : '\x1b[36m';
+			var color = (text.indexOf("Deleting object:") !== -1 || text.indexOf("Empty array:") !== -1) ? '\x1b[31m' : '\x1b[36m';
 			console.log(color, "Activity: "+text+((_ref) ? JSON.stringify(_ref) : ''));
 		}		
 	},
@@ -28,7 +28,7 @@ var eh_helper   = {
 					}					
 				} else if(config.arr_ && eh_helper.random_(false, false, true) && props.length > 1){
 					props = [];
-					eh_helper.logme('Empty array', _ref, config);
+					eh_helper.logme('Empty array:', _ref, config);
 				}				
 			} else if (typeof props[keys[pickone]] == 'string' || typeof props[keys[pickone]] == 'number') {
 
