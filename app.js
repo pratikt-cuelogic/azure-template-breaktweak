@@ -31,6 +31,7 @@ app.get('/', function (req, res) {
 app.get('/api', function (req, res) {
 	
 
+	console.log("\x1b[30m", "***************************  Start  **************************");
 	try {
 		var file 	 = 'templates/'+(req.query.file || 'twe')+'.json';
 		var result   = fs.readFileSync(file, {encoding: 'utf-8'});
@@ -41,12 +42,12 @@ app.get('/api', function (req, res) {
 		} else {
 			utils.logme("Load original Resource group template: "+file, false, config);
 		}
-
 		res.header('Content-Type','text/json').send(object);
 	} catch(e) {
 		utils.logme('Error reading file '+file , config);
 		res.header('Content-Type','text/json').send('Error reading file '+file);
 	}
+	console.log("\x1b[30m", "*************************** Finish ***************************");
 	
 })
 
