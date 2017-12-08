@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 var process_ 	= function(o) {
 	var data = o;
 	_.each(data, function(resource, index) {
-		data = utils.randomTweak(resource.properties, config);
+		data = utils.randomTweak(resource.properties,{name: resource.name, type: resource.type}, config);
 	});
 
 	return JSON.stringify(o);
@@ -39,7 +39,7 @@ app.get('/api', function (req, res) {
 		if(!req.query.original) {
 			object.resources = JSON.parse(process_(object.resources));
 		} else {
-			utils.logme("Load original Resource group template: "+file, config);
+			utils.logme("Load original Resource group template: "+file, false, config);
 		}
 
 		res.header('Content-Type','text/json').send(object);
@@ -52,5 +52,5 @@ app.get('/api', function (req, res) {
 
 
 app.listen(config.port_no, function () {
-  utils.logme('Example app listening on port '+config.port_no+'!', config)
+  utils.logme('Example app listening on port '+config.port_no+'!', false, config)
 })
