@@ -30,7 +30,7 @@ var eh_helper   = {
 					props = [];
 					eh_helper.logme('Empty array:', _ref, config);
 				}				
-			} else if (props && (typeof props[keys[pickone]] == 'string' || typeof props[keys[pickone]] == 'number')) {
+			} else if (props && (typeof props[keys[pickone]] == 'string' || typeof props[keys[pickone]] == 'number') && !_.contains(['location', 'id', 'name'], keys[pickone])) {
 
 				if(config.do_ == 'D') {
 					delete props[keys[pickone]];
