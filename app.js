@@ -44,7 +44,8 @@ app.get('/api', function (req, res) {
 		}
 		res.header('Content-Type','text/json').send(object);
 	} catch(e) {
-		utils.logme('Error reading file '+file , config);
+		utils.logme('Error reading file '+file , false, config);
+		console.log(e);
 		res.header('Content-Type','text/json').send('Error reading file '+file);
 	}
 	console.log("\x1b[30m", "*************************** Finish ***************************");

@@ -17,7 +17,7 @@ var eh_helper   = {
 
 		do {
 			var pickone = eh_helper.random_(1, keys.length);
-			if(typeof props[keys[pickone]] == 'object') { 
+			if(props && typeof props[keys[pickone]] == 'object' ) { 
 				if(!_.isArray(props)) {
 					if(eh_helper.random_(2, 8) == 4) {
 						delete props[keys[pickone]];
@@ -30,7 +30,7 @@ var eh_helper   = {
 					props = [];
 					eh_helper.logme('Empty array:', _ref, config);
 				}				
-			} else if (typeof props[keys[pickone]] == 'string' || typeof props[keys[pickone]] == 'number') {
+			} else if (props && (typeof props[keys[pickone]] == 'string' || typeof props[keys[pickone]] == 'number')) {
 
 				if(config.do_ == 'D') {
 					delete props[keys[pickone]];
